@@ -7,6 +7,7 @@
   "scripts": {
     "pretest": "node scripts/clean-allure-results.js",
     "test": "cucumber-js",
+    "test:playwright": "playwright test tests",
     "pretest:bdd": "node scripts/clean-allure-results.js",
     "test:bdd": "cucumber-js",
     "pretest:smoke": "node scripts/clean-allure-results.js",

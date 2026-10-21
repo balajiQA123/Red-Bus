@@ -23,6 +23,7 @@ The default local run uses headed Chromium because the redBus site may reject he
 | Command | Purpose |
 | --- | --- |
 | `npm test` | Run the complete Cucumber suite |
+| `npm run test:playwright` | Run Playwright specs in `tests/` |
 | `npm run test:bdd` | Run the complete BDD suite |
 | `npm run test:smoke` | Run scenarios tagged `@smoke` |
 | `npm run test:regression` | Run scenarios tagged `@regression` |
@@ -77,6 +78,7 @@ The raw and generated report folders and browser diagnostics are excluded from G
 
 ```text
 features/             Gherkin feature files
+tests/                Playwright spec files
 step-definitions/     Cucumber step implementations
 pages/                Playwright page objects
 support/              Cucumber World, hooks, and browser lifecycle
