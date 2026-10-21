@@ -1,0 +1,7 @@
+{
+  "searchRoute": {
+    "from": "Pune",
+    "to": "Mumbai",
+    "journeyDay": "tomorrow"
+  }
+}

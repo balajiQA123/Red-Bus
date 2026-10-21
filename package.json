@@ -1,0 +1,25 @@
+{
+  "name": "redbus-automation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RedBus browser automation with Playwright, Cucumber BDD, and Allure",
+  "main": "support/world.js",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:smoke": "cucumber-js --tags \"@smoke\"",
+    "test:regression": "cucumber-js --tags \"@regression\"",
+    "test:search": "cucumber-js --tags \"@searchBus\"",
+    "report:generate": "allure generate reports/allure-results --clean -o reports/allure-report",
+    "report:open": "allure open reports/allure-report"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.55.0",
+    "allure-commandline": "^2.34.1",
+    "allure-cucumberjs": "^3.2.0",
+    "dotenv": "^16.4.7"
+  }
+}
