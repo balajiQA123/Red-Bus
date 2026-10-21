@@ -1,4 +1,4 @@
-@smoke @regression
+@regression
 Feature: Search buses on redBus
   As a redBus user
   I want to search for buses between two cities
@@ -7,10 +7,16 @@ Feature: Search buses on redBus
   Background:
     Given user launches the redBus website
 
-  @searchBus
-  Scenario: Search buses from Pune to Mumbai
-    When user enters "Pune" in the From location
-    And user enters "Mumbai" in the To location
-    And user selects a journey date
+  @smoke @searchBus
+  Scenario: Search buses for the configured route
+    When user enters the configured departure city
+    And user enters the configured destination city
+    And user selects the configured journey date
     And user clicks on the Search buses button
-    Then user should see the available buses from Pune to Mumbai
+    Then available buses should be shown for the configured route
+
+  @routeForm
+  Scenario: Select the configured route in the bus search form
+    When user enters the configured departure city
+    And user enters the configured destination city
+    Then the configured route should be selected in the search form

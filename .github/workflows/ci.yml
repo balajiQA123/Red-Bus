@@ -45,16 +45,17 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run Cucumber scenarios
-        run: npm test
+        run: xvfb-run -a npm test
         env:
           CI: true
           BASE_URL: https://www.redbus.in
+          HEADLESS: "false"
 
       - name: Generate Allure HTML report
         if: always()
         run: |
           if [ -d reports/allure-results ]; then
-            npm run report:generate
+            npm run allure:generate
           fi
 
       - name: Upload Allure report and diagnostics

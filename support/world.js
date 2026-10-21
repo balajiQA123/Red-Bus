@@ -1,12 +1,16 @@
 const { World, setWorldConstructor } = require("@cucumber/cucumber");
-const { chromium } = require("@playwright/test");
+const { chromium, expect } = require("@playwright/test");
+const { runtimeConfig } = require("../config/environment");
+
+expect.configure({ timeout: runtimeConfig.expectTimeoutMs });
 
 class RedBusWorld extends World {
   async startBrowser() {
-    const headless = process.env.HEADLESS !== "false";
-    this.browser = await chromium.launch({ headless });
+    this.browser = await chromium.launch({ headless: runtimeConfig.headless });
     this.context = await this.browser.newContext({
-      recordVideo: { dir: "videos/" },
+      locale: "en-IN",
+      timezoneId: runtimeConfig.timezone,
+      recordVideo: { dir: runtimeConfig.videosDir },
       viewport: { width: 1440, height: 1000 },
     });
     this.page = await this.context.newPage();

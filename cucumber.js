@@ -1,15 +1,17 @@
 require("dotenv").config();
 
+const { runtimeConfig } = require("./config/environment");
+
 module.exports = {
   default: {
     paths: ["features/**/*.feature"],
     require: ["support/**/*.js", "pages/**/*.js", "step-definitions/**/*.js"],
-    format: ["progress", "summary", "allure-cucumberjs/reporter"],
+    format: ["summary", "allure-cucumberjs/reporter"],
     formatOptions: {
-      resultsDir: "reports/allure-results",
+      resultsDir: runtimeConfig.allureResultsDir,
     },
     publishQuiet: true,
     parallel: 1,
-    retry: process.env.CI ? 1 : 0,
+    retry: runtimeConfig.ci ? 1 : 0,
   },
 };
